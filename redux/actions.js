@@ -5,6 +5,7 @@ export const obtenerPokemonesAccion=()=>async(dispatch,getState)=>{
     try{
         const res= await axios.get('https://pokeapi.co/api/v2/pokemon/');
         const basedata=res.data.results;
+        console.log("labase de datos es:",basedata);
         dispatch({
             type: OBTENER_POKEMONES_EXITO,
             payload: basedata
