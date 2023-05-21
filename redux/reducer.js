@@ -1,8 +1,11 @@
 import { OBTENER_POKEMONES_EXITO, SIGUIENTE_POKEMONES_EXITO, RETROCEDER_POKEMONES_EXITO } from "./actionsTypes"
 
 const datainitial={
-    array:[],
-    offset: 20,
+    count: null,
+    next: null,
+    previous:null,
+    results:[]
+
 }
 
 export default function pokereducer(state=datainitial, action){
@@ -11,21 +14,20 @@ export default function pokereducer(state=datainitial, action){
             console.log("ingresando reducer obtener");
             return{
                 ...state,
-                array: action.payload
+                ...action.payload
             }
         case SIGUIENTE_POKEMONES_EXITO:
             console.log("ingresando reducer siguiente");
             return{
                 ...state,
-                array:action.payload,
-                offset:action.offset
+                ...action.payload,
+                
             }
         case RETROCEDER_POKEMONES_EXITO:
             console.log("ingresando reducer retroceder");
             return{
                 ...state,
-                array:action.payload,
-                offset:action.offset
+                ...action.payload,
             }
 
 

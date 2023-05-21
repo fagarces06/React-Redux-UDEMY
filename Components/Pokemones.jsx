@@ -5,15 +5,30 @@ import { obtenerPokemonesAccion,siguientePokemonesAccion,retrocederPokemonesAcci
 
 export default function Pokemones () {
     const dispatch=useDispatch();
-    const Pokemones= useSelector(store=>store.pokemones.array);
+    const Pokemones= useSelector(store=>store.pokemones.results);
+    const next= useSelector(store=> store.pokemones.next);
+    const previous= useSelector(store=> store.pokemones.previous);
     console.log("hola",Pokemones);
   
       return (
             <div>
                   Lista de Pokemones 
-                  <button onClick={()=>dispatch(obtenerPokemonesAccion())}>Obtener Pokemones</button>
-                  <button onClick={()=>dispatch(siguientePokemonesAccion())}>Siguientes Pokemones</button>
-                  <button onClick={()=>dispatch(retrocederPokemonesAccion())}>retroceder Pokemones</button>
+                  {
+                    (Pokemones.lenght===0) && // operador condicional con &&
+                    <button onClick={()=>dispatch(obtenerPokemonesAccion())}>Obtener Pokemones</button>
+                    
+                  }
+
+                  {
+                    next===null &&
+                    <button onClick={()=>dispatch(siguientePokemonesAccion())}>Siguientes Pokemones</button>
+                  }
+                  
+                  {
+                    previous===null &&
+                    <button onClick={()=>dispatch(retrocederPokemonesAccion())}>retroceder Pokemones</button>
+                  }
+                  
                   
                   <ul>
                     {
